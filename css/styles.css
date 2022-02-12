@@ -148,3 +148,11 @@ header{
     flex-grow: 1.5;
 }
 
+.keyboard-row button.green-key{
+    background-color: green;
+}
+
+.keyboard-row button.grey-key{
+    background-color: grey;
+}
+

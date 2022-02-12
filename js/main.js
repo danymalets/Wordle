@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentLetterIndex = 0
 
         let board = [[]]
+        let keys = new Object();
 
         const answer = generateWord()
         console.log(answer)
@@ -14,10 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
         initKeys()
 
         function initKeys() {
-            const keys = document.querySelectorAll('.keyboard-row button')
+            const documentKeys = document.querySelectorAll('.keyboard-row button')
 
-            for (let i = 0; i < keys.length; i++) {
-                keys[i].onclick = ({ target }) => {
+            for (let i = 0; i < documentKeys.length; i++) {
+                const key = documentKeys[i].getAttribute("data-key")
+                keys[key] = documentKeys[i]
+            }
+
+            for (let i = 0; i < documentKeys.length; i++) {
+                documentKeys[i].onclick = ({ target }) => {
                     const key = target.getAttribute("data-key")
                     if (key === "enter"){
                         if (currentLetterIndex === wordLength){
@@ -29,6 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
                             if (wordExists(word)){
                                 const result = checkWord(word, answer)
                                 for (let i = 0; i < currentWord.length; i++){
+                                    const key = keys[word[i]]
+                                    console.log(key)
+                                    if (result[i] === letterNotFound){
+                                        key.classList.add('grey-key')
+                                    }
+                                    else if (result[i] === letterGuessed){
+                                        key.classList.add('green-key')
+                                    }
                                     setTimeout(() => {
                                         currentWord[i].classList.add(result[i])
                                         currentWord[i].classList.add("square-rotation")
