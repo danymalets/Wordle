@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    height: 100%;
+}
+
+#container{
+    display: flex;
+    background-color: #ffffff;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+
+#game{
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column
+}
+
+
+header{
+    border-bottom: 2px solid gray;
+}
+
+.title{
+    color: black;
+    font-weight: bold;
+    font-size: 80px;
+    text-align: center;
+}
+
+#board-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    overflow: hidden;
+    width: 100%;
+}
+
+#board{
+    border-spacing: 5px 5px;
+    /*height: 800px;*/
+    /*justify-content: center;*/
+}
+
+/*.word{*/
+/*    display: flex;*/
+/*    height: 50px;*/
+/*    justify-content: center;*/
+/*}*/
+
+.square{
+    margin: 20px;
+    border: 3px solid darkgrey;
+    width: 70px;
+    height: 74px;
+
+    text-transform: uppercase;
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 550;
+    text-align: center;
+    user-select: none;
+}
+
+.square-with-letter{
+    border: 3px solid grey;
+}
+
+.grey-tile{
+    --color: grey;
+}
+
+.yellow-tile{
+    --color: #bebe14;
+}
+
+.green-tile{
+    --color: green;
+}
+
+.square-rotation{
+    animation-name: rotate-tile;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes rotate-tile {
+    50%{
+        background-color: white;
+        transform: rotateX(90deg);
+        border: 3px solid grey;
+        color: black;
+    }
+    51%{
+        border: 3px solid var(--color);
+        background-color: var(--color);
+        color: white;
+    }
+    100%{
+        border: 3px solid var(--color);
+        background-color: var(--color);
+        transform: rotateX(0deg);
+        color: white;
+    }
+}
+
+#keyboard-container{
+    height: 300px;
+    justify-content: center;
+}
+
+.keyboard-row{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto 8px;
+    touch-action: manipulation;
+}
+
+.keyboard-row button{
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    height: 58px;
+    cursor: pointer;
+    background-color: lightgrey;
+    color: black;
+    flex-grow: 1;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-radius: 4px;
+    user-select: none;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.keyboard-row .big-button{
+    flex-grow: 1.5;
+}
+
