@@ -7,10 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentLetterIndex = 0
 
         let board = [[]]
-        let keys = new Object();
+        let keys = {};
 
-        const answer = generateWord()
-        console.log(answer)
+        const answer = 'вьюга'
         createSquares()
         initKeys()
 
@@ -81,15 +80,16 @@ document.addEventListener("DOMContentLoaded", () => {
         function createSquares() {
             const gameBoard = document.getElementById("board")
 
+            // for (let i = 0; i < 1; i++){
             for (let i = 0; i < triesCount; i++){
-                let currentWord = document.createElement("tr")
+                let currentWord = document.createElement("div")
                 currentWord.classList.add("word")
                 gameBoard.appendChild(currentWord)
 
                 board.push([])
 
                 for (let j = 0; j < wordLength; j++){
-                    let square = document.createElement("td")
+                    let square = document.createElement("div")
                     square.classList.add("square")
                     square.setAttribute("id", (i+1).toString())
                     currentWord.appendChild(square)
