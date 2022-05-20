@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let board = [[]]
         let keys = {};
 
-        const answer = 'вьюга'
+        const answer = generateWord()
+        console.log(answer)
         createSquares()
         initKeys()
 
@@ -35,11 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                 const result = checkWord(word, answer)
                                 for (let i = 0; i < currentWord.length; i++){
                                     const key = keys[word[i]]
-                                    console.log(key)
                                     if (result[i] === letterNotFound){
                                         key.classList.add('grey-key')
                                     }
-                                    else if (result[i] === letterGuessed){
+                                    else if (result[i] === letterGuessed) {
                                         key.classList.add('green-key')
                                     }
                                     setTimeout(() => {
